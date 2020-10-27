@@ -26,6 +26,8 @@ ON_DEATH(async function(signal, err) {
  */
 ev.on('qr.**', async (qrcode,sessionId) => {
   //base64 encoded qr code image
+  console.log(sessionId)
+  console.log(qrcode)
   const imageBuffer = Buffer.from(qrcode.replace('data:image/png;base64,',''), 'base64');
   fs.writeFileSync(`qr_code${sessionId?'_'+sessionId:''}.png`, imageBuffer);
 });
